@@ -12,7 +12,7 @@ A simple **Pomodoro Timer** built using Python and the Tkinter library. This app
 - **Progress Tracking:** Checkmarks to track completed work sessions.
 
 ## Demo
-![Pomodoro Timer Screenshot](Screenshot%202024-12-04%20185330.png)
+![Pomodoro Timer Screenshot](https://imgur.com/a/HQh935h)
 
 ## Requirements
 - Python 3.x
