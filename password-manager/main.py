@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import random
+import json
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
@@ -25,21 +26,59 @@ def generate_password():
     password = "".join(password_list)
     pass_entry.insert(0, password)
     pass_entry.clipboard_append(password)
+
+def find_password():
+    website = website_entry.get()
+    try:
+        with open('data.json', 'r') as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="No Data File Found")
+    else:
+        if website in data:
+            email = data[website]['email']
+            password = data[website]['password']
+            messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(title="Error", message=f"No details for {website} exists")
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
     website_value = website_entry.get()
     email_value = email_entry.get()
     password_value = pass_entry.get()
+    new_data = {
+        website_value: {
+            "email": email_value,
+            "password": password_value
+        }
+    }
 
-    if len(website_value) > 0 and len(email_value) > 0 and len(password_value) > 0:
-        is_ok = messagebox.askokcancel(title=website_value, message=f"These are the details entered:\nEmail: {email_value}\nPassword: {password_value}")
-        if is_ok:
-            with open("data.txt", "a") as password:
-                password.write(f"{website_value} | {email_value} | {password_value}\n")
-                website_entry.delete(0, 'end')
-                pass_entry.delete(0, 'end')
-    else:
+
+    if len(website_value) == 0 and len(email_value) == 0 and len(password_value) == 0:
         messagebox.showinfo(title="Oops!", message="Please dont leave any fields empty!")
+
+    else:
+        try:
+            with open("data.json", "r") as data_file:
+                #Reading old data
+                data = json.load(data_file)
+        except FileNotFoundError:
+            with open("data.json", "w") as data_file:
+                # Saving updated data
+                json.dump(new_data, data_file, indent=4)
+
+        else:
+            #Updating old data with new data
+            data.update(new_data)
+
+            with open("data.json", "w") as data_file:
+                #Saving updated data
+                json.dump(data, data_file, indent=4)
+
+        finally:
+            website_entry.delete(0, 'end')
+            pass_entry.delete(0, 'end')
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -60,8 +99,8 @@ password_label = Label(text="Password:")
 password_label.grid(column=0, row=3)
 
 #Entries
-website_entry = Entry(width=55)
-website_entry.grid(column=1, row=1, columnspan=2)
+website_entry = Entry(width=36)
+website_entry.grid(column=1, row=1)
 website_entry.focus()
 email_entry = Entry(width=55)
 email_entry.grid(column=1, row=2, columnspan=2)
@@ -71,6 +110,8 @@ pass_entry.grid(column=1, row=3)
 #Buttons
 generate_button = Button(text="Generate Password", command=generate_password)
 generate_button.grid(column=2, row=3)
+search_button = Button(text="Search", width=15, command=find_password)
+search_button.grid(column=2, row=1)
 add_button = Button(text="Add",  width=46, command=save)
 add_button.grid(column=1, row=4, columnspan=2)
 
