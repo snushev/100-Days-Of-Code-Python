@@ -53,7 +53,6 @@ def save():
         }
     }
 
-
     if len(website_value) == 0 and len(email_value) == 0 and len(password_value) == 0:
         messagebox.showinfo(title="Oops!", message="Please dont leave any fields empty!")
 
