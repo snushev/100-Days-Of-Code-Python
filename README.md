@@ -9,11 +9,11 @@ Below is a list of the projects included in this repository, organized by folder
 | **Project**                          | **Description**                                                                                      | **Link**                |  
 |--------------------------------------|------------------------------------------------------------------------------------------------------|-------------------------|  
 | **Coffee Machine**                   | A simple simulation of a coffee machine that processes orders, tracks resources, and handles money.  | [View Project](./Coffee%20Machine) |  
-| **Pong Game**                        | A classic Pong game built with `tkinter`.                                                            | [View Project](./Pong)  |  
-| **Rock, Paper, Scissors**            | A console-based version of the classic game.                                                        | [View Project](./Rock_Paper_Scissors) |  
-| **Snake Game**                       | The traditional snake game built using `tkinter`.                                                   | [View Project](./snake_game) |  
-| **US States Guessing Game**          | A map-based quiz game to guess all U.S. states.                                                     | [View Project](./US-states-guessing-game) |  
-| **Mile-to-KM Converter**             | A simple app to convert miles to kilometers.                                                        | [View Project](./Mile-to-km-converter) |  
+| **Pong Game**                        | A classic Pong game built with `tkinter`.                                                            | [View Project](Turtle-projects/Pong)  |  
+| **Rock, Paper, Scissors**            | A console-based version of the classic game.                                                        | [View Project](Other-projects/Rock_Paper_Scissors) |  
+| **Snake Game**                       | The traditional snake game built using `tkinter`.                                                   | [View Project](Turtle-projects/snake_game) |  
+| **US States Guessing Game**          | A map-based quiz game to guess all U.S. states.                                                     | [View Project](Turtle-projects/US-states-guessing-game) |  
+| **Mile-to-KM Converter**             | A simple app to convert miles to kilometers.                                                        | [View Project](Tkinter-projects/Mile-to-km-converter) |  
 
 _...and more!_  
 
